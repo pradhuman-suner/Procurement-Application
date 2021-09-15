@@ -1,5 +1,5 @@
 # Procurement-Application
-This is procurement web application i made using anguler and spring boot.
+This is procurement web application i made using angular and spring boot.
 
 # Features In The Application : 
 :busts_in_silhouette: User Module - 1. Can See Product List
