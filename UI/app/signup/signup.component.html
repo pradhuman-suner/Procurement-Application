@@ -1,0 +1,140 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Signup</title>
+</head>
+
+<body>
+  <div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <span class="padding-bottom--15 text-center">Sign Up</span>
+
+
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" style="flex-direction: column !important;">
+
+               
+               
+    
+
+
+                <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                  <mat-label>Username</mat-label>
+                  <input placeholder="User Name Always Unique" formControlName="userName" name="userName" matInput [(ngModel)]="userName" required>
+                  <mat-hint class="invalid-msg"
+                    *ngIf="signupForm.controls.username?.invalid && (signupForm.controls.username?.touched || signupForm.controls.username?.dirty)">
+                    *Username required
+                  </mat-hint>
+              
+                </mat-form-field>
+<!-- 
+                <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                  <mat-label>First Name </mat-label>
+                  <input placeholder="First Name" formControlName="firstName" name="firstName" matInput required >
+                  <mat-hint class="invalid-msg"
+                    *ngIf="signupForm.controls.firstName?.invalid && (signupForm.controls.username?.touched || signupForm.controls.username?.dirty)">
+                    *First Name required
+                  </mat-hint>
+                </mat-form-field> -->
+
+                <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                  <mat-label>First Name </mat-label>
+                  <input placeholder="First Name" formControlName="firstName" name="firstName" matInput [(ngModel)]="firstName" 
+                    required>
+                  <mat-hint class="invalid-msg"
+                    *ngIf="signupForm.controls.firstName?.invalid && (signupForm.controls.firstName?.touched || signupForm.controls.firstName?.dirty)">
+                   
+                    *Frist Name Required
+                  </mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                  <mat-label>Last Name </mat-label>
+                  <input placeholder="Last Name" formControlName="lastName" name="lastName" matInput [(ngModel)]="lastName" >
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                  <mat-label>Email Id </mat-label>
+                  <input placeholder="Email ID" formControlName="emailId" name="emailId" matInput [(ngModel)]="emailId" ngModel [email]="true"
+                    required>
+                  <mat-hint class="invalid-msg"
+                    *ngIf="signupForm.controls.emailId?.invalid && (signupForm.controls.emailId?.touched || signupForm.controls.emailId?.dirty)">
+                    *Email Id required <br>
+                    *Please Enter Valid Email
+                  </mat-hint>
+                </mat-form-field>
+
+
+
+                <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                  <mat-label>Password</mat-label>
+                  <input type="password" placeholder="Password" formControlName="password" name="password" [(ngModel)]="password" matInput required
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$">
+                  <mat-hint class="invalid-msg"
+                    *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || signupForm.controls.password?.dirty)">
+                    *Password is minimum 8 characters <br>
+                    *Password must contain one Alphabet ,One Numeric and one Special Character
+                  </mat-hint>
+                </mat-form-field>
+
+
+                <!-- <mat-label>Select Role</mat-label>
+                  <mat-select name="branch" (selectionChange)="valid($event.value)" [(ngModel)]="role" required>
+                    <mat-option value="Admin">Admin</mat-option>
+                    <mat-option value="User">User</mat-option>
+                  </mat-select>
+                  <mat-hint class="invalid-msg"
+                  *ngIf="signupForm.controls.role?.invalid && (signupForm.controls.role?.touched || signupForm.controls.role?.dirty)">
+                  *User Type required</mat-hint> -->
+                
+                  <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                    <mat-label>address</mat-label>
+                    <input placeholder="address" formControlName="address" name="address" [(ngModel)]="address" matInput required>
+                    <mat-hint class="invalid-msg"
+                      *ngIf="signupForm.controls.address?.invalid && (signupForm.controls.address?.touched || signupForm.controls.address?.dirty)">
+                      *Address required
+                    </mat-hint>
+                  </mat-form-field>
+
+                
+
+                  <mat-form-field appearance="outline" fxFlex style="width: 100%;">
+                    <mat-label>Contact</mat-label>
+                    <input placeholder="contact No" formControlName="contactNo" name="contactNo" [(ngModel)]="contactNo" matInput required
+                    minlength="10" maxlength="10" pattern="[0-9]*">
+                    <mat-hint class="invalid-msg"
+                      *ngIf="signupForm.controls.contactNo?.invalid && (signupForm.controls.contactNo?.touched|| signupForm.controls.contactNo?.dirty)">
+                      *Contact No Must have 10 digit 
+                      
+                    </mat-hint>
+                  </mat-form-field>
+
+
+                  <button mat-raised-button color="primary" [disabled]="signupForm.invalid">Sign Up</button>
+              
+                </form>
+                <div class="footer-link padding-top--24">
+                  <span>Already have an account? <a href="">Sign In</a></span>
+      
+                </div>
+              </div>
+             
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- https://freefrontend.com/css-forms/ -->

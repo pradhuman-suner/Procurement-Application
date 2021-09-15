@@ -1,0 +1,45 @@
+.example-form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 30%;
+  padding: 1%;
+}
+
+mat-divider{
+    padding: 3px;
+}
+
+.mat-icon {
+  vertical-align: middle;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.header{
+  background: skyblue;
+  font-size: 22px;
+}
+
+button{
+  padding: 5px;
+  margin-left: 1%;
+}
+
+ng-template{
+padding: 10px;
+}
+
+.mat-toolbar {
+margin: -24px;
+margin-bottom: 0;
+width: auto;
+}
+
+.spacer {
+flex: 1 auto;
+}
+.dialogClass{
+  width: 40em;
+}

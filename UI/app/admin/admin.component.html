@@ -1,0 +1,175 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <!-- Header  -->
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" (click)="snav.toggle()"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Procurement</span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-icon-button class="example-icon" aria-label="Notification">
+          <mat-icon>notifications</mat-icon>
+      </button> -->
+  </mat-toolbar>
+
+  <!-- Side Bar -->
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <!-- <a mat-list-item routerLink="/profile">
+          <mat-icon>face</mat-icon>&nbsp; Profile
+        </a> -->
+        <!-- <a mat-list-item routerLink="/cart">
+          <mat-icon>shopping_cart</mat-icon>&nbsp; Cart
+        </a>
+        <a mat-list-item routerLink="/my-user-dashboard">
+          <mat-icon>apps</mat-icon>&nbsp; Products
+        </a> -->
+        <!-- <a mat-list-item [matMenuTriggerFor]="menu">
+                  <mat-icon>apps</mat-icon>&nbsp; Products
+              </a>
+              <mat-menu #menu="matMenu" xPosition="after">
+                  <button routerLink="/my-user-dashboard" mat-menu-item>All</button>
+                  <button mat-menu-item>Mobile</button>
+                  <button mat-menu-item>Laptop</button>
+                  <button mat-menu-item>PC</button>
+              </mat-menu> -->
+
+        <a mat-list-item routerLink="">
+          <mat-icon>exit_to_app</mat-icon>&nbsp; Logout
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content style="padding: 10px; background-color:lightgray;">
+
+
+      <mat-tab-group mat-stretch-tabs>
+
+        <mat-tab label="Vendors">
+
+          
+          <table id="content" mat-table [dataSource]="dataSourceVender" class="mat-elevation-z8" style="width: 100%;">
+
+            <ng-container matColumnDef="userName">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="firstName">
+              <th mat-header-cell *matHeaderCellDef> First Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="lastName">
+              <th mat-header-cell *matHeaderCellDef> Last Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef> Address </th>
+              <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="contact">
+              <th mat-header-cell *matHeaderCellDef> Contact </th>
+              <td mat-cell *matCellDef="let element"> {{element.contactNo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="emailId">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element">
+                <button (click)="deleteUser(element.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsVendor"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsVendor;"></tr>
+          </table>
+
+
+        </mat-tab>
+
+        <mat-tab label="Products"> <span class="example-spacer"></span>
+          <div fxLayout="row" fxLayoutAlign="space-between center" style="margin: 10px;">
+            <div></div>
+            <button color="primary" fxLayoutAlign="end center" (click)="openAddProductDialog()" mat-stroked-button>
+              <mat-icon>add</mat-icon> &nbsp; Add Product 
+            </button>
+          </div>
+          <table id="content" mat-table [dataSource]="dataSourceProducts" class="mat-elevation-z8" style="width: 100%;">
+
+
+            <ng-container matColumnDef="productName">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="productCategory">
+              <th mat-header-cell *matHeaderCellDef> Category </th>
+              <td mat-cell *matCellDef="let element"> {{element.productCategory}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="productDescription">
+              <th mat-header-cell *matHeaderCellDef> Description </th>
+              <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="productPrice">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.productPrice}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="thresholdValue">
+              <th mat-header-cell *matHeaderCellDef> Threshold Value </th>
+              <td mat-cell *matCellDef="let element"> {{element.thresholdValue}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions" >
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let element">
+                <button (click)="deleteProduct(element.productId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                
+                &nbsp;
+                &nbsp;
+                <button (click)="openUpdateProductDialog(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsProducts"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsProducts;"></tr>
+          </table>
+
+
+        </mat-tab>
+      </mat-tab-group>
+
+
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

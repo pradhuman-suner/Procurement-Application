@@ -1,0 +1,75 @@
+<div style="margin: 40px;">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" style="margin: 40px;">
+        <button color="primary" fxLayoutAlign="start center" routerLink="/cart" mat-stroked-button>
+            <mat-icon>arrow_left_alt</mat-icon> &nbsp; Back To Cart
+        </button>
+        
+        <button color="primary" fxLayoutAlign="end center" (click)="confirmOrder();" mat-stroked-button>
+            Confirm Order &nbsp; <mat-icon>arrow_right_alt</mat-icon>
+        </button>
+    </div>
+
+    <div id="content" style="background-color: lightblue;">
+        <!-- Mat Card -->
+        <mat-card style="background-color: lightblue;">
+
+            
+            <div fxFlex="50" class="wh-100">
+                <h1>INVOICE</h1> 
+                <mat-card-subtitle>ORDER NO : {{mydate}}</mat-card-subtitle>
+                <mat-card-content>TOTAL PRICE : {{totalprice}} Rs </mat-card-content>
+            </div>
+            <div fxFlex="50" class="wh-100">
+                <h3>Name : {{myuser.firstName}} {{myuser.lastName}}</h3>
+                <h3>Email : {{myuser.emailId}} </h3>
+                <h3>Contact : {{myuser.contactNo}} </h3>
+                <h3>Address : {{myuser.address}}</h3>
+            </div>
+        </mat-card>
+
+        <table style="background-color: lightblue;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="productName">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+            </ng-container>
+
+          
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="productPrice">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let element"> {{element.productPrice}} </td>
+            </ng-container>
+
+            <!-- Quntity Column -->
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef> Select Quantity </th>
+                <td mat-cell *matCellDef="let element">
+                    <div style="display: flex;">
+                        
+                        <p style="margin: 0px 10px; min-width: 20px;">{{element.quantity}}</p>
+                        
+                    </div>
+
+                </td>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef> Total </th>
+                <td mat-cell *matCellDef="let element"><label>{{element.total}}</label></td>
+            </ng-container>
+
+            
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
+

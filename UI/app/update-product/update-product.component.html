@@ -1,0 +1,99 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+      <span> UPDATE PRODUCT </span>
+      <!-- <span class="spacer"></span>
+      <button class="mat-dialog-close"  mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button> -->
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <form [formGroup]="AddProductForm">
+    <div class="dialogClass">
+      <div fxFlex fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Product Name</mat-label>
+            <input [(ngModel)]='productdata.productName' formControlName="FieldProductName" class="inputfield" matInput placeholder="Product Name"
+                       name="productName"  pattern="[a-zA-Z][a-zA-Z ]+">
+            <mat-hint class="invalid-msg"
+              *ngIf="AddProductForm.controls.productName?.invalid && (AddProductForm.controls.vendorName?.touched || AddProductForm.controls.vendorName?.dirty)">
+              *Product Name required
+            </mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Product Category</mat-label>
+            <input [(ngModel)]='productdata.productCategory' formControlName="FieldProductCategory" class="inputfield" matInput
+                       placeholder="Product Category" name="productCategory" >
+            <mat-hint class="invalid-msg"
+              *ngIf="AddProductForm.controls.productCategory?.invalid && (AddProductForm.controls.productCategory?.touched || AddProductForm.controls.productCategory?.dirty)">
+              *Product Category required
+            </mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Product Description</mat-label>
+            <input [(ngModel)]='productdata.productDescription' formControlName="FieldProductDescription" class="inputfield" matInput
+                       placeholder="Product Description" name="productDescription" >
+            <mat-hint class="invalid-msg"
+              *ngIf="AddProductForm.controls.productDescription?.invalid && (AddProductForm.controls.productDescription?.touched || AddProductForm.controls.productDescription?.dirty)">
+              *Product Description required
+            </mat-hint>
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Product Price</mat-label>
+            <input [(ngModel)]='productdata.productPrice' formControlName="FieldProductPrice" class="inputfield" matInput placeholder="Product Price"
+                       name="productPrice" pattern="[0-9]*">
+            <mat-hint class="invalid-msg"
+              *ngIf="AddProductForm.controls.productPrice?.invalid && (AddProductForm.controls.productPrice?.touched || AddProductForm.controls.productPrice?.dirty)">
+              *Product Price required
+            </mat-hint>
+          </mat-form-field>
+  
+          
+  
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Threshold Value</mat-label>
+            <input [(ngModel)]='productdata.thresholdValue' formControlName="FieldThresholdValue" class="inputfield" matInput placeholder="Threshold Value"
+                       name="thresholdValue">
+            <mat-hint class="invalid-msg"
+              *ngIf="AddProductForm.controls.thresholdValue?.invalid && (AddProductForm.controls.thresholdValue?.touched || AddProductForm.controls.thresholdValue?.dirty)">
+              *Threshold Value required
+            </mat-hint>
+          </mat-form-field>
+ 
+          <div fxFlex='50'>
+  
+             <!-- <label class="proname">Product Image </label> -->
+             <mat-label color="primary">Product Image</mat-label>
+             <input [(ngModel)]='productdata.productImage' type="file" (change)="onFileChanged($event)" class="inputfield">
+             <img [src]="imgURL" height="100" width="100" *ngIf="imgURL">
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <!-- <button type="submit" mat-raised-button color="primary" [disabled]="AddProductForm.invalid"> Add
+      <span>
+        <mat-icon>add_circle</mat-icon>
+      </span>
+    </button>
+    <button type="button" mat-raised-button (click)="closeDialog()" mat-flat-button color="warn">
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button> -->
+    
+  
+    <mat-dialog-actions>
+      <button type="button" mat-raised-button  (click)="onClose()" mat-flat-button color="warn">
+          Cancel
+      </button> &nbsp; &nbsp;
+      &nbsp;
+      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Update</button>
+   </mat-dialog-actions>
+  </form>
+ 
